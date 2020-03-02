@@ -14,14 +14,18 @@
 ```
 npm install -g firebase-tools
 ```
+- Firebaseにログインして、プロジェクト一覧を確認
+```
+firebase login
+firebase list
+```
 
 ### 手順
 - 当レポジトリを適当な場所にクローンする
 ```
 git clone https://github.com/kawabata2018/thaitone-e7817.git
 ```
-- ライブラリのインストール
+- ローカルサーバーを立ち上げて実行
 ```
-cd thaitone-e7817
-npm install
+firebase serve
 ```
