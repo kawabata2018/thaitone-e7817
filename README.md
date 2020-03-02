@@ -3,4 +3,6 @@
 
 ## 使い方
 適当な場所にクローンしてくる
-```git clone https://github.com/kawabata2018/thaitone-e7817.git``
+```
+git clone https://github.com/kawabata2018/thaitone-e7817.git
+```
