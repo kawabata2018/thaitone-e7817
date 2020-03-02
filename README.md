@@ -27,5 +27,6 @@ git clone https://github.com/kawabata2018/thaitone-e7817.git
 ```
 - ローカルサーバーを立ち上げて実行
 ```
+cd thaitone-e7817
 firebase serve
 ```
