@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>タイ語声調テスト - ログイン認証</title>
+        <link rel="stylesheet" href="../css/style.css" media="screen and (min-width:640px)">
+        <link rel="stylesheet" href="../css/style_phone.css" media="screen and (max-width:640px)">
+        <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.2.0/firebase-ui-auth.css" />
+        <script src="https://www.gstatic.com/firebasejs/ui/4.2.0/firebase-ui-auth__ja.js"></script>
+    </head>
+    <body>
+      <header>
+        <div id="title">
+          タイ語声調テスト
+        </div>
+        <div id="right">
+          <button class="overBtn" onclick="urlTo('en')">English</button>
+        </div>
+      </header>
+      <div id="app">
+        <div style="margin:20px">
+          <!-- <div>
+            <p><a href="home.html">Guestはこちら</a></p>
+          </div> -->
+          <div id="firebaseui-auth-container"></div>
+          <div id="loader"><h2>Loading... Please wait</h2></div>
+        </div>
+      </div>
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
+      <script src="https://www.gstatic.com/firebasejs/6.6.2/firebase-app.js"></script>
+      <!-- Add Firebase products that you want to use -->
+      <script src="https://www.gstatic.com/firebasejs/6.6.2/firebase-auth.js"></script>
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <script type="text/javascript" src="../js/app.js"></script>
+      <script type="text/javascript" src="../js/login.js"></script>
+      <script type="text/javascript" src="../js/module.js"></script>
+      <script type="text/javascript">
+      let successURL = (function(){
+        let referrer = sessionStorage.getItem('referrer');
+        if (referrer) {
+          return referrer;
+        } else {
+          return 'home.html';
+        }
+      }());
+        // FirebaseUI config.
+        var uiConfig = {
+          callbacks: {
+            signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+              // User successfully signed in.
+              // Return type determines whether we continue the redirect automatically
+              // or whether we leave that to developer to handle.
+              return true;
+            },
+            uiShown: function() {
+              // The widget is rendered.
+              // Hide the loader.
+              document.getElementById('loader').style.display = 'none';
+            }
+          },
+          // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
+          signInFlow: 'popup',
+          signInSuccessUrl: successURL,
+          signInOptions: [
+            // Leave the lines as is for the providers you want to offer your users.
+            firebase.auth.EmailAuthProvider.PROVIDER_ID
+          ],
+          // Terms of service url.
+          // tosUrl: '<your-tos-url>',
+          // Privacy policy url.
+          // privacyPolicyUrl: '<your-privacy-policy-url>'
+        };
+
+        // Initialize the FirebaseUI Widget using Firebase.
+        var ui = new firebaseui.auth.AuthUI(firebase.auth());
+
+        // The start method will wait until the DOM is loaded.
+        ui.start('#firebaseui-auth-container', uiConfig);
+      </script>
+    </body>
+</html>
