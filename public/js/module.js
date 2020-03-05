@@ -66,14 +66,22 @@ function downloadCSV(csvString, filename){
 }
   
 function uploadCSV(csvString, filename){
-    let userId = (function(){
-        console.log("uid:", sessionStorage.getItem('u-uid'));
-        return sessionStorage.getItem('u-uid');
-    })();
+    // *****----
+    // 保存されるStorageのディレクトリ>>>
     // Create a root reference
     let storageRef = firebase.storage().ref('results_term1');
+    // ----*****
+
+    // *****----
+    // emailを使う場合>>>
+    // Create a reference to directory {u-email}/
+    // let uidRef = storageRef.child(sessionStorage.getItem('u-email'));
+    // --*****--
+    // uidを使う場合>>>
     // Create a reference to directory {uid}/
-    let uidRef = storageRef.child(userId);
+    let uidRef = storageRef.child(sessionStorage.getItem('u-uid'));
+    // ----*****
+
     // Create a reference to csv file
     let csvFileRef = uidRef.child(filename);
     // CSV string

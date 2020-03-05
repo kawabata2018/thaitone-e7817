@@ -24,8 +24,9 @@ authPromise.then(() => {
     sessionStorage['u-name'] = user_name;
     sessionStorage['u-email'] = user_email;
     sessionStorage['u-uid'] = user_uid;
-    console.log("[referrer]", sessionStorage.getItem('referrer'));
-    console.log("[u-uid]" ,sessionStorage.getItem('u-uid'));
+    // console.log("[referrer]", sessionStorage.getItem('referrer'));
+    console.log("[u-email]", sessionStorage.getItem('u-email'));
+    console.log("[u-uid]", sessionStorage.getItem('u-uid'));
     let innerHtml = '<span>ようこそ, <b>'+user_name+'</b>さん</span>';
     if (user_name=="guestuser") {
         innerHtml += '<button class="overBtn" onclick="signIn()">Sign In</button>';

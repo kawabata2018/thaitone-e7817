@@ -8,7 +8,6 @@ service firebase.storage {
     match /results_term0/{userId}/{allPaths=**} {
       allow read, write: if request.auth.uid == userId;
     }
-
     match /results_term0/uid_guestuser/{allPaths=**} {
       allow read, write: if true;
     }
@@ -16,7 +15,6 @@ service firebase.storage {
     match /results_term1/{userId}/{allPaths=**} {
       allow read, write: if request.auth.uid == userId;
     }
-
     match /results_term1/uid_guestuser/{allPaths=**} {
       allow read, write: if true;
     }
@@ -24,7 +22,6 @@ service firebase.storage {
     match /results_term2/{userId}/{allPaths=**} {
       allow read, write: if request.auth.uid == userId;
     }
-
     match /results_term2/uid_guestuser/{allPaths=**} {
       allow read, write: if true;
     }
