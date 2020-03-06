@@ -58,6 +58,19 @@ $('#startBtn').on('click', () => {
 })
 
 
+function showFileNum(){
+  async function myFunc(){
+    let fileNum = await getFileNum('testall');
+    if (fileNum==null) {
+      $('#message').html("結果を保存するにはログインしてください");
+    } else {
+      $('#message').html(fileNum+"回 完了");
+    }
+  }
+  // run
+  myFunc()
+}
+
 function playSound(wavPath){
   let myAudio = new Audio(wavPath);
   let p = myAudio.play();

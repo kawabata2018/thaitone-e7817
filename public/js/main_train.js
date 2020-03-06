@@ -8,6 +8,7 @@ let soundArray = [];
 let outputs = [["soundPath", "clickNum", "reference", "your", "isCorrect"]];
 const soundFolderRef = firebase.storage().ref('soundFolder/');
 
+
 $('#startBtn').on('click', () => {
     // create mondai set
     for (let tone=1; tone<6; tone++){
@@ -52,6 +53,20 @@ $('#startBtn').on('click', () => {
     $('#playBtn').prop('disabled', false);
     $('#startBtn').prop('disabled', true);
 })
+
+
+function showFileNum(){
+  async function myFunc(){
+    let fileNum = await getFileNum('trainall');
+    if (fileNum==null) {
+      $('#message').html("結果を保存するにはログインしてください");
+    } else {
+      $('#message').html(fileNum+"回 完了");
+    }
+  }
+  // run
+  myFunc()
+}
 
 function playSound(wavPath){
   let myAudio = new Audio(wavPath);

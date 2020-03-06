@@ -12,6 +12,11 @@ const url = new URL(location.href);
 const query = url.searchParams.get("query");
 const pairset = ["12", "13", "14", "15", "23", "24", "25", "34", "35", "45"]
 
+$(function(){
+  $(window).on('beforeunload', function(){
+    return "このページから移動してよろしいですか？\n移動すると結果が保存されません。";
+  })
+})
 
 if (!pairset.includes(query)) {
     location.href = "error.html"
@@ -20,12 +25,6 @@ if (!pairset.includes(query)) {
     tone_b = Number(query[1]);
 }
 
-$(function(){
-    $(window).on('beforeunload', function(){
-      return "このページから移動してよろしいですか？\n移動すると結果が保存されません。";
-    })
-})
-  
 $(function(){
     for (let tone=1; tone<6; tone++){
         if (tone!=tone_a&&tone!=tone_b) {
@@ -78,6 +77,20 @@ $('#startBtn').on('click', () => {
     $('#playBtn').prop('disabled', false);
     $('#startBtn').prop('disabled', true);
 })
+
+
+function showFileNum(){
+  async function myFunc(){
+    let fileNum = await getFileNum('test1vs1_'+query);
+    if (fileNum==null) {
+      $('#message').html("結果を保存するにはログインしてください");
+    } else {
+      $('#message').html(fileNum+"回 完了");
+    }
+  }
+  // run
+  myFunc()
+}
 
 function playSound(wavPath){
   let myAudio = new Audio(wavPath);

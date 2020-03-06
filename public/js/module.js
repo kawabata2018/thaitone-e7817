@@ -1,3 +1,8 @@
+// *****----
+// 保存されるStorageのディレクトリ>>>
+const defaultSaveDir = 'results_term1'
+// ----*****
+
 function urlTo(lang){
     let url = location.href;
     if (lang=="en") {
@@ -53,6 +58,35 @@ function getNowtime(){
     return YY+"-"+MM+DD+"-"+hh+mm;
 }
 
+function getFileNum(prefix){
+    if (sessionStorage.getItem('u-uid')=='uid_guestuser') {
+        console.log("guestuser")
+        return null
+    } else {
+        let storageRef = firebase.storage().ref(defaultSaveDir);
+        let uidRef = storageRef.child(sessionStorage.getItem('u-uid'));
+        try {
+            return new Promise((res, rej) => {
+                uidRef.listAll().then((result) => {
+                    let fileNum = 0;
+                    result.items.forEach((ref) => {
+                        console.log(ref.name);
+                        if (ref.name.startsWith(prefix)) {
+                            fileNum += 1;
+                        }
+                    });
+                    res(fileNum);
+                }).catch((error) => {
+                    rej(error);
+                });
+            });
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
+}
+
 function downloadCSV(csvString, filename){
     const bom     = new Uint8Array([0xEF, 0xBB, 0xBF]);
     const blob    = new Blob([bom, csvString], {'type': 'text/csv'});
@@ -66,22 +100,9 @@ function downloadCSV(csvString, filename){
 }
   
 function uploadCSV(csvString, filename){
-    // *****----
-    // 保存されるStorageのディレクトリ>>>
-    // Create a root reference
-    let storageRef = firebase.storage().ref('results_term1');
-    // ----*****
-
-    // *****----
-    // emailを使う場合>>>
-    // Create a reference to directory {u-email}/
-    // let uidRef = storageRef.child(sessionStorage.getItem('u-email'));
-    // --*****--
-    // uidを使う場合>>>
+    let storageRef = firebase.storage().ref(defaultSaveDir);
     // Create a reference to directory {uid}/
     let uidRef = storageRef.child(sessionStorage.getItem('u-uid'));
-    // ----*****
-
     // Create a reference to csv file
     let csvFileRef = uidRef.child(filename);
     // CSV string

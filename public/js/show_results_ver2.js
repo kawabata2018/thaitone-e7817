@@ -124,7 +124,7 @@ function sumArray(arrays){
 }
 
 function str2date(str){
-    return str.slice(0,2)+"/"+str.slice(2,4)+" "+str.slice(4,6)+":"+str.slice(6,8);
+    return str.split('_').slice(-1)[0];
 }
 
 function array2CSV(array){

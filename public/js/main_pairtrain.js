@@ -83,6 +83,20 @@ function playSound(wavPath){
   })
 }
 
+
+function showFileNum(){
+  async function myFunc(){
+    let fileNum = await getFileNum('train1vs1_'+query);
+    if (fileNum==null) {
+      $('#message').html("結果を保存するにはログインしてください");
+    } else {
+      $('#message').html(fileNum+"回 完了");
+    }
+  }
+  // run
+  myFunc()
+}
+
 function myPlaySound(){
   clickNum++;
   if (count <= total-1){

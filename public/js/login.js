@@ -34,6 +34,11 @@ authPromise.then(() => {
         innerHtml += '<button class="overBtn" onclick="signOut()">Sign Out</button>';
     }
     $('#user_menu').html(innerHtml);
+    try {
+        showFileNum();
+    } catch(err) {
+        console.log();
+    }
 })
 
 function signOut(){

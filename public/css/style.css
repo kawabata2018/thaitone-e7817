@@ -1,3 +1,7 @@
+h2 {
+    margin: 0.5rem 0;
+}
+
 body {
   background-color: #d1f5fc;
 }
@@ -26,14 +30,12 @@ header {
     top: 0;
     margin: 0px 10px 0px auto;
 }
-
 #user_menu>span {
     position: relative;
     width: auto;
     font-size: 1.5vh;
     margin: 0px 5px;
 }
-
 #user_menu>button {
     position: relative;
     font-size: 1.5vh;
@@ -55,21 +57,19 @@ header {
     bottom: 0;
     margin: 0px 10px 0px auto;
 }
-
 #right>p {
     text-align: right;
     margin: auto 0px 0px 0px;
 }
 
+.message-block {
+    margin:0;
+    text-align:right;
+}
+
 .copyright {
     position: absolute;
     width: 40%;
-}
-
-.result {
-    position: relative;
-    width: 99%;
-    text-align: right;
 }
 
 #uploading {
@@ -156,6 +156,7 @@ button {
     background-color: white;
 }
 
+
 /* Checkbox */
 .checkbox-input{
     display: none;
@@ -193,6 +194,7 @@ button {
     border-bottom: 3px solid #d01137;
     border-right: 3px solid #d01137;
 }
+
 
 /* analysis.html */
 .showResults {
