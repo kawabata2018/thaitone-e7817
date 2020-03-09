@@ -115,11 +115,11 @@ function incFunc(){
     $('#soundBtn').get(0).play();
     isAnswered = false;
     $('#nextBtn').prop('disabled', true);
-    $('#mondai').html("問題" + (count+1) + "/" + total);
-    $('#text').html("練習モード");
+    $('#text').html("問題" + (count+1) + "/" + total);
+    $('#mondai').html("練習モード");
     $('#playBtn').html("音声再生");
   } else {
-    $('#mondai').html("終了です。お疲れ様でした！");
+    $('#text').html("終了です。お疲れ様でした！");
     let csv = array2CSV(outputs);
     let nowtime = getNowtime();
     console.log(csv);
@@ -131,7 +131,7 @@ function incFunc(){
     } finally {
       $('#nextBtn').prop('disabled', true);
       $('#quitBtn').hide();
-      $('#text').html(isCorrect + "/" + total + " 問正解");
+      $('#mondai').html(isCorrect + "/" + total + " 問正解");
       $('#playBtn').html("声調選択に戻る");
       $('#playBtn').on('click', function(){
         location.replace('train_1vs1.html');

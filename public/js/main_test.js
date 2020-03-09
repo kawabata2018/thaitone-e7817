@@ -1,10 +1,10 @@
 ﻿let count;
+let total;
 let isCorrect = 0;
 let clickNum = 0;
 let refArray = [];
 let soundArray = [];
 let outputs = [["soundPath", "clickNum", "reference", "your", "isCorrect"]];
-const total = 40;
 const soundFolderRef = firebase.storage().ref('soundFolder/');
 
 $(function(){
@@ -29,7 +29,7 @@ $('#startBtn').on('click', () => {
       refArray = refArray.concat(ref);
     }
     refArray = shuffle(refArray);
-    // total = refArray.length;
+    total = refArray.length;
     console.log("refArray has been set successfully")
     // console.log(refArray);
     // create soundArray

@@ -127,6 +127,11 @@ function uploadCSV(csvString, filename){
         console.log('Successfully uploaded');
         setTimeout(function(){
             removeUploading();
+            try {
+                showFileNum();
+            } catch(err) {
+                console.log();
+            }
         }, 500);
     })
 }

@@ -55,6 +55,6 @@ function signOut(){
 function signIn(){
     sessionStorage['referrer'] = location.href;
     setTimeout(function(){
-        location.replace('index.html');
+        location.href = 'index.html';
     }, 500)
 }
