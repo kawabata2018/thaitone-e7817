@@ -32,7 +32,7 @@ firebase serve
 ```
 
 ### 保存するフォルダを変更
-- `public/js/module/js` の3行目を、保存したいフォルダ名（"results_term2"など）に変更
+- `public/js/module.js` の3行目を、保存したいフォルダ名（"results_term2"など）に変更
 - 変更を反映
 ```
 firebase serve
