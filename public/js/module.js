@@ -1,6 +1,6 @@
 // *****----
 // 保存されるStorageのディレクトリ>>>
-const defaultSaveDir = 'results_term1'
+const defaultSaveDir = 'results_term2'
 // ----*****
 
 function urlTo(lang){
